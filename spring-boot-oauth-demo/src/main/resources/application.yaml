@@ -1,0 +1,38 @@
+server:
+  port: 8099
+spring:
+  application:
+    name: spring-boot-oauth-demo
+  aop:
+    auto: true
+    proxy-target-class: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///spring_boot_oauth_demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8&useSSL=false
+    username: dev
+    password: dev
+  mvc:
+    favicon:
+      enabled: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.luoyifan.springbootoauthdemo.model.po
+  configuration:
+    map-underscore-to-camel-case: true
+
+mapper:
+  not-empty: false
+  identity: MYSQL
+
+pagehelper:
+  helper-dialect: mysql
+  #设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果
+  #相当于没有执行分页查询，但是返回结果仍然是Page类型）
+  page-size-zero: false
+  #启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页
+  #禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据
+  reasonable: true
